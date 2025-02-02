@@ -1,0 +1,76 @@
+### PHP project .gitignore file
+
+
+# Ignore system files
+*.tmp
+*.bak
+*.swp
+*.swo
+*.swn
+*.log
+*.sql
+*.err
+*.out
+
+
+# Ignore IDE and editor files
+.idea/
+.vscode/
+.phpstorm*
+*.iml
+*.ipr
+*.iws
+
+
+# Ignore PHPStorm files
+/.phpstorm/
+*.phpstorm.meta.php
+*_php.cs.svn.base
+*_svn.svn.base
+
+
+# Ignore NetBeans files
+/nbproject/
+/build/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-configuration
+
+
+# Ignore vendor files
+/vendor/
+
+
+# Ignore composer files
+/composer.lock
+
+
+# Ignore node modules
+/node_modules/
+
+
+# Ignore environment files
+/.env
+
+
+# Ignore tests and coverage files
+/tests/
+/coverage/
+
+
+# Ignore uploaded files and media
+/uploads/
+/media/
+
+
+# Ignore logs and cache
+/logs/
+/cache/
+
+
+# Ignore specific files
+.htaccess
+Thumbs.db
+ehthumbs.db
+Desktop.ini
