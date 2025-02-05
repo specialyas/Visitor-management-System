@@ -1,0 +1,66 @@
+/* 
+    
+.navbar {
+    margin-bottom: 0;
+    background-color:#333333;
+    border: 0;
+    font-size: 15px !important;
+    letter-spacing: 2px;
+    opacity:0.9;
+    color: #ffffff;
+     border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+}
+
+.navbar-nav li.active a {
+    color: #fff !important;
+    background-color:#00ACE9 !important;
+  }
+
+.navbar-nav #li:hover {
+    color:  #939339 !important;
+}
+
+.navbar {
+      margin-bottom: 0px;
+  }
+
+  #li{
+    color:
+     #ffffff !important;
+  }
+  #lii{color : #ffffff;} */
+
+
+  .my-nav {
+    font-size: 20px;
+}
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  .float-left {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  /* Change the link color to #111 (black) on hover */
+  li a:hover {
+    background-color: #111;
+  }
+  
+
+  .float-right {
+    float:right
+  }

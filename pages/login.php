@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
 
     // Prepare and execute
-    $stmt = $conn->prepare("SELECT password, role FROM userdata WHERE email = ?");
+    $stmt = $conn->prepare("SELECT password, role FROM users WHERE email = ?");
    //  $stmt = $conn->prepare("SELECT password FROM userdata WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
@@ -22,9 +22,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->fetch();
 
         // Debugging: Print out the stored hashed password and entered password
-        /* echo "Stored Hashed Password: " . $db_password . "<br>";
+         echo "Stored Hashed Password: " . $db_password . "<br>";
         echo "Entered Password: " . $password . "<br>";
-         */// Use password_verify to check the hashed password
+         // Use password_verify to check the hashed password
         if (password_verify($password, $db_password)) {
             $message = "Login successful";
             $toastClass = "bg-success";
@@ -35,6 +35,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['role'] = $role; // Store user role in the session
             if ($role == 'admin') {
                 header("Location: admin_dashboard.php");
+                exit();
+
             } else {
                 header("Location: user_dashboard.php");
             }

@@ -3,7 +3,7 @@ include '../database/db_connection.php';
 
 function getUsernameByEmail($conn, $email) {
     // Prepare and execute
-    $stmt = $conn->prepare("SELECT username FROM userdata WHERE email = ?");
+    $stmt = $conn->prepare("SELECT username FROM users WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $stmt->store_result();
