@@ -1,4 +1,14 @@
-<?php include '../database/db_connection.php'; ?>
+<?php include '../database/db_connection.php'; 
+include '../pages/checkuserName.php';
+
+session_start();
+
+$email = $_SESSION['email']; // Fetch the email from the session
+
+
+$username = getUsernameByEmail($conn, $email);
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -41,63 +51,7 @@
     </div>
 
 
-    <!-- 
-        <form class= "myForm" action= "<?php echo $_SERVER["PHP_SELF"];?>" method= "POST" id ="form">
-        <?echo $displayError ;?>
-	<div class="row">
-         <div class="col-sm-7">
-          <div class="form-group">
-            <label for="name"> Name :</label> 
-  <input autocomplete="off" class="form-control" type= "text" name ="name" placeholder= "Enter Visitor's Name." required id = "name"
-         oninvalid="this.setCustomValidity(this.willValidate?'':'Name is required')" onblur="isEmpty('name')" onfocus="onfo('name')"
-	 data-toggle="popover" title="Popover Header" data-content="Some content inside the popover" data-trigger = "onfocus"/>
-          </div>
-         </div>
-	
-</div>
-
-	
-
-<div class="form-group">
-<label for="cno"> Contact No. :</label> <span id = "span" style = "padding-bottom: 5px;float:right;"></span>
- <input autocomplete="off" class="form-control" type="number" id = "ContactInfo" onkeyup = "Ccheck('ContactInfo')" 
-	onblur = "isEmpty('ContactInfo')" onfocus = "onfo('ContactInfo')" name="cno" placeholder="Enter Contact Number." 
-	required min="1000000000" max = "9999999999" 
-        oninvalid="this.setCustomValidity(this.willValidate?'':'Enter correct Contact number please')"
-	data-toggle="popover" title="Popover Header" data-content="Some content inside the popover" data-trigger = "onfocus"/>
-</div>
-<div class="form-group">
-<label for ="prps">Purpose :</label> 
-<input autocomplete="off" class="form-control" type="text" name="purpose" placeholder="Enter Purpose." required id = "Purpose" 
-       oninvalid="this.setCustomValidity(this.willValidate?'':'Enter your Purpose')" maxlength="30" onblur="isEmpty('Purpose')"
-       data-toggle="popover" title="Popover Header" data-content="Some content inside the popover" data-trigger = "onfocus" />
-</div>
-<div class="row">
- <div class="col-sm-7">
-  <div class="form-group">
-   <label for = "meetingTo">Meeting to :</label>
-    <input autocomplete="off" class="form-control" type="text" required name = "MeetingTo" id = "meetingTo" 
-	   placeholder="Whom will you meet ?"       oninvalid="this.setCustomValidity(this.willValidate?'':'Whom do you want to meet ?')" maxlength="30"  onblur="isEmpty('meetingTo')"
-	   data-toggle="popover" title="Popover Header" data-content="Some content inside the popover" data-trigger = "onfocus"/>
-   </div>
-  </div>
-
-</div>
-
- <div class="form-group">
-   <label  for = "comment">Comment :</label>  
-     <input autocomplete="off" class="form-control" type= "varchar" maxlength="30" name = "comment" height="50px" >
-     <br>
- </div>
-<div>
- <input id="submitme" type="submit" name="submit_post" 
-	class="btn btn-success" value="Submit" onclick="return emptys()"/>
- <input autocomplete="off" id="mydata" type="hidden" name="mydata">
-		
-  </div>
- </form>
-
-    -->
+ 
 </body>
 
 

@@ -1,64 +1,69 @@
 <?php
+// Include the database connection file to interact with the database
 include '../database/db_connection.php';
+// Include the file that contains the function to fetch the username by email
 include '../pages/checkuserName.php';
 
+// Start the session to access session variables (email and user role)
 session_start();
 
-$email = $_SESSION['email']; // Fetch the email from the session
+// Retrieve the logged-in user's email from the session
+$email = $_SESSION['email']; 
 
-
+// Fetch the username associated with the logged-in user's email using the helper function
 $username = getUsernameByEmail($conn, $email);
 
-
+// Check if the form is submitted via POST method
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $visitorname = $_POST['visitor_name'];
-    $phoneNumber = $_POST['phone_number'];
-    $visitPurpose = $_POST['visit_purpose'];
-    $signedInBy = $username; // Username of the person signing in the visitor
-    $visitDate = date('Y-m-d'); // Current date as the visit date
-    $visitorID = 'VST-' . strtoupper(bin2hex(random_bytes(4))); 
+    // Retrieve the form data submitted by the user
+    $visitorname = $_POST['visitor_name'];      
+    $phoneNumber = $_POST['phone_number'];      
+    $visitPurpose = $_POST['visit_purpose'];    
+    $signedInBy = $username;                    
+    $visitDate = date('Y-m-d');                  
+    $visitorID = 'VST-' . strtoupper(bin2hex(random_bytes(4)));  // Generate a unique visitor ID using random bytes
 
-
-
+    // Prepare SQL statement to insert the visitor's data into the 'visitors' table
     $stmt = $conn->prepare("INSERT INTO visitors (visitor_name, phone_number, visit_purpose, visit_date, status, signed_in_by, visitor_id) 
-                        VALUES (?, ?, ?, ?, ?, ?, ?)");
-$status = 'signed_in'; // Define the status variable
-$stmt->bind_param("sssssss", $visitorname, $phoneNumber, $visitPurpose, $visitDate, $status, $signedInBy, $visitorID);
+                            VALUES (?, ?, ?, ?, ?, ?, ?)");
+    
+    // Define the default status for the visitor as 'signed_in'
+    $status = 'signed_in'; 
 
+    // Bind parameters to the SQL query, using the appropriate data types
+    $stmt->bind_param("sssssss", $visitorname, $phoneNumber, $visitPurpose, $visitDate, $status, $signedInBy, $visitorID);
 
-    // Prepare and bind
-   /*  $stmt = $conn->prepare("INSERT INTO visitors (visitor_name, phone_number, visit_purpose, visit_date, status, signed_in_by, visitor_id) 
-                            VALUES (?, ?, ?, ?, 'signed_in', ?, ?)");
-    $stmt->bind_param("ssssss", $visitorname, $phoneNumber, $visitPurpose, $visitDate, $signedInBy, $visitorID);
- */
+    // Execute the query and check if it was successful
     if ($stmt->execute()) {
+        // Success message, with the generated visitor ID
         echo "Visitor signed in successfully. Visitor ID: " . $visitorID;
     } else {
+        // Error message if something goes wrong with the query execution
         echo "Error: " . $stmt->error;
     }
 
-    $stmt->close();
-    $conn->close();
+    $stmt->close();     // Close the prepared statement to free up resources
+    $conn->close();     // Close the database connection
+
 }
 ?>
 
-<!-- 
-nerate a unique visitor ID (Example: VST-65A7B9E1C2)
-    $visitorID = 'VST-' . strtoupper(bin2hex(random_bytes(4))); 
 
-    // Prepare and bind
-    $stmt = $conn->prepare("INSERT INTO visitors (visitor_id, visitor_name, phone_number, visit_purpose, status, signed_in_by) VALUES (?, ?, ?, ?, 'signed_in', ?)");
-    $stmt->bind_param("sssss", $visitorID, $visitorname, $phoneNumber, $visitPurpose, $signedInBy);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
 
-    if ($stmt->execute()) {
-        echo "Visitor signed in successfully. Visitor ID: " . $visitorID;
-    } else {
-        echo "Error: " . $stmt->error;
-    }
+<div>
+<a class="nav-link" href="../pages/user_dashboard.php">Home</a>
 
-    $stmt->close();
-    $conn->close();
-}
-?> -->
+</div>
 
 
+</body>
+</html>

@@ -1,61 +1,39 @@
 <?php
+// Function to check if the user is logged in and has the correct role
+function checkUserLoginStatus() {
+    // Check if the session contains an email and if the user role is 'user'
+    if (!isset($_SESSION['email']) || $_SESSION['role'] !== 'user') {
+        // Redirect the user to the login page if not authenticated or not a 'user'
+        header("Location: login.php");
+        exit(); // Stop further script execution after redirection
+    }
+}
+
+// Include the database connection and other necessary files
 include '../database/db_connection.php';
 include '../pages/checkuserName.php';
-/* include 'inc/header.php';
- */
+
+// Start the session to access session variables
 session_start();
 
-// Check if the user is logged in, if
-// not then redirect them to the login page
-/* if (!isset($_SESSION['email'])) {
-    header("Location: login.php");
-    exit();
-}
+// Call the function to check the login status
+checkUserLoginStatus();
 
- // Prepare and execute
- $stmt = $conn->prepare("SELECT username FROM userdata WHERE email = ?");
- $stmt->bind_param("s", $email);
- $stmt->execute();
- $stmt->store_result();
- $username = "";
- if ($stmt->num_rows > 0) {
-    $stmt->bind_result($username);
-    $stmt->fetch();
+// Retrieve the logged-in user's email from the session
+$email = $_SESSION['email'];
 
- }
- */
-
-
-// Check if the user is logged in, if
-// not then redirect them to the login page
-/* if (!isset($_SESSION['email'])) {
-    header("Location: login.php");
-    exit();
-} */
-
-// Check if the user is logged in and is a regular user
-if (!isset($_SESSION['email']) || $_SESSION['role'] !== 'user') {
-    header("Location: login.php");
-    exit();
-}
-
-$email = $_SESSION['email']; // Fetch the email from the session
-
-// Prepare and execute
-/* $stmt = $conn->prepare("SELECT username FROM userdata WHERE email = ?");
-$stmt->bind_param("s", $email);
-$stmt->execute();
-$stmt->store_result();
-$username = "";
-if ($stmt->num_rows > 0) {
-    $stmt->bind_result($username);
-    $stmt->fetch();
-}
-
-$stmt->close(); */
+// Fetch the username associated with the logged-in user's email
 $username = getUsernameByEmail($conn, $email);
-$conn->close();
+
+// chcek if a valid username is retrieved
+if ($username === null) {
+    die("Error: No username found for the given email.");
+}
+
+$conn->close();// Close the database connection to free resources
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -74,7 +52,21 @@ $conn->close();
 <body> 
 <?php include 'inc/nav.php'; ?>
 
-
+<div>
+    <h2>Check out Visitor </h2>
+    <form>
+    <div class="mb-3">
+                <label for="exampleInput" class="form-label">Example Input</label>
+                <input type="text" class="form-control w-25" id="exampleInput">
+            </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="text" class="form-control"  placeholder="Enter visitor id">
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
     
 
 
