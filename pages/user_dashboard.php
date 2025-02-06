@@ -75,9 +75,7 @@ $conn->close();
 <?php include 'inc/nav.php'; ?>
 
 
-    <div>
-        <h2 class="p-4 mt-5"><?php echo ucfirst("$username") ?>'s  Dashboard</h2>
-    </div>
+    
 
 
 

@@ -1,3 +1,5 @@
+<?php include '../database/db_connection.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,9 +19,12 @@
 
 <?php include 'inc/nav.php'; ?>
 
+<div>
+        <h2 class="p-4 mt-5"><?php echo "Logged in as: " . ucfirst("$username") ?></h2>
+    </div>
     <div class="main">
-        <form action="">
-        <h2>Sign In Visitor</h2>
+    <form method="POST" action="check_in_visitor.php">
+            <h2>Sign In Visitor</h2>
             <label for="first">Visitor Name:</label>
             <input class="input"  type="text" id="first" name="visitor_name" placeholder="Enter Visitor Name" required />
 
