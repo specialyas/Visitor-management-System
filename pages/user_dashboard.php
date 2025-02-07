@@ -51,23 +51,52 @@ $conn->close();// Close the database connection to free resources
 
 <body> 
 <?php include 'inc/nav.php'; ?>
-
-<div>
-    <h2>Check out Visitor </h2>
-    <form>
-    <div class="mb-3">
-                <label for="exampleInput" class="form-label">Example Input</label>
-                <input type="text" class="form-control w-25" id="exampleInput">
+ 
+<div class="container-fluid mt-6">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Check Out Visitor</h5>
+                        <div class="mb-3">
+                            <form action="checkout_visitor.php" method="post">
+                            <label for="receipt-id" class="form-label">Visitor ID</label>
+                            <input type="text" class="form-control mb-4" id="visitor_id" name="visitor_id" placeholder="Enter Visitor ID">
+                            <button class="btn btn-primary">Checkout</button>
+                        </form>
+                            </div>
+                    </div>
+                </div>
             </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="text" class="form-control"  placeholder="Enter visitor id">
-  </div>
-  
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-</div>
-    
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Details</h5>
+                        <p class="card-text">Date: 2025-01-21</p>
+                        <p class="card-text">Time in: 17:08:04</p>
+                        <p class="card-text">Name: kishan</p>
+                        <p class="card-text">Contact No: 9943454224</p>
+                        <p class="card-text">Purpose: meeting</p>
+                        <p class="card-text">Meeting: leader</p>
+                        <p class="card-text">Receipt ID: 322870</p>
+                        <p class="card-text">Comment: commenr</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Recent Visitors</h5>
+                        <p class="card-text">kisan</p>
+                        <p class="card-text">kishan</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
 
 
 
