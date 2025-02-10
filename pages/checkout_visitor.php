@@ -28,7 +28,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $updateStmt->bind_param("ss", $signedOutBy, $visitorID);
 
         if ($updateStmt->execute()) {
-            echo "Visitor signed out successfully.";
+                    // Redirect the user to the login page if not authenticated or not a 'user'
+        header("Location: user_dashboard.php");
+        echo "Visitor signed out successfully.";
+       
         } else {
             echo "Error: " . $updateStmt->error;
         }
