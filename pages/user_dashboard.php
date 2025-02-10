@@ -30,6 +30,59 @@ if ($username === null) {
     die("Error: No username found for the given email.");
 }
 
+
+// Prepare the SQL statement to select the last 5 signed-in visitors
+$stmt = $conn->prepare("SELECT visitor_name, sign_in_time FROM visitors WHERE status = 'signed_in' ORDER BY sign_in_time DESC LIMIT 5");
+
+
+// Execute the query
+$stmt->execute();
+
+
+/* // Initialize arrays
+$visitors = [];
+$visitors_time = []; 
+
+// Fetch visitor data
+while ($row = $result->fetch_assoc()) {
+    $visitors[] = $row['visitor_name'];
+    $visitors_time[] = $row['sign_in_time']; // Store sign-in time
+}
+ */
+
+// Get the result set
+$result = $stmt->get_result();
+// Store visitor names in an array
+$visitors = [];
+$visitors_time = []; 
+
+while ($row = $result->fetch_assoc()) {
+    $visitors[] = $row['visitor_name'];
+    $visitors_time[] = $row['sign_in_time'];
+
+}
+
+// Check if there are any records
+// if ($result->num_rows > 0) {
+//     while ($row = $result->fetch_assoc()) {
+//         // echo "Visitor ID: " . $row['visitor_id'] . "<br>";
+//         //    echo "Name: " . $row['visitor_name'] . "<br>";
+//         $visitor = $row['visitor_name'];
+//        /*  echo "Phone: " . $row['phone_number'] . "<br>";
+//         echo "Visit Purpose: " . $row['visit_purpose'] . "<br>";
+//         echo "Signed In By: " . $row['signed_in_by'] . "<br>";
+//         echo "Visit Date: " . $row['visit_date'] . "<br>";
+//         echo "Sign-in Time: " . $row['sign_in_time'] . "<br>";
+//         echo "Status: " . $row['status'] . "<br>";
+//         echo "---------------------------------------<br>"; */
+//     }
+// } else {
+//     echo "No visitors currently signed in.";
+// }
+
+// Close the statement and database connection
+$stmt->close();
+
 $conn->close();// Close the database connection to free resources
 ?>
 
@@ -72,31 +125,41 @@ $conn->close();// Close the database connection to free resources
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Details</h5>
+                        <p class="card-text">Name: kishan</p>
                         <p class="card-text">Date: 2025-01-21</p>
                         <p class="card-text">Time in: 17:08:04</p>
-                        <p class="card-text">Name: kishan</p>
                         <p class="card-text">Contact No: 9943454224</p>
                         <p class="card-text">Purpose: meeting</p>
-                        <p class="card-text">Meeting: leader</p>
-                        <p class="card-text">Receipt ID: 322870</p>
-                        <p class="card-text">Comment: commenr</p>
+                        <p class="card-text">Visitor ID: 322870</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Recent Visitors</h5>
-                        <p class="card-text">kisan</p>
-                        <p class="card-text">kishan</p>
-                    </div>
+                 
+                    <!-- HTML to display visitors in a card -->
+<div class="card-body">
+    <h5 class="card-title">Recent Visitors</h5>
+
+    <?php 
+    // Check if there are visitors
+    if (!empty($visitors)) {
+       foreach ($visitors as $index => $visitor) {
+                echo "<p class='card-text'>" . htmlspecialchars($visitor) . 
+                     " - " . date('h:i A', strtotime($visitors_time[$index])) . "</p>";
+            }
+    } else {
+        echo "<p class='card-text'>No active visitors</p>";
+    }
+    ?>
+</div>
                 </div>
             </div>
         </div>
     </div> 
 
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-
 
 
 
