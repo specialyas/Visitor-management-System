@@ -16,9 +16,13 @@ $username = getUsernameByEmail($conn, $email);
 // Check if the form is submitted via POST method
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve the form data submitted by the user
-    $visitorname = $_POST['visitor_name'];      
+   /*  $visitorname = $_POST['visitor_name'];      
     $phoneNumber = $_POST['phone_number'];      
     $visitPurpose = $_POST['visit_purpose'];    
+    */ 
+    $visitorname = htmlspecialchars(trim($_POST['visitor_name']));  
+    $phoneNumber = htmlspecialchars(trim($_POST['phone_number']));
+    $visitPurpose = htmlspecialchars(trim($_POST['visit_purpose']));
     $signedInBy = $username;                    
     $visitDate = date('Y-m-d');                  
     $visitorID = 'VST-' . strtoupper(bin2hex(random_bytes(4)));  // Generate a unique visitor ID using random bytes
@@ -34,10 +38,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("sssssss", $visitorname, $phoneNumber, $visitPurpose, $visitDate, $status, $signedInBy, $visitorID);
 
     // Execute the query and check if it was successful
-    if ($stmt->execute()) {
+ /*    if ($stmt->execute()) {
         // Success message, with the generated visitor ID
         echo "Visitor signed in successfully. Visitor ID: " . $visitorID;
-    } else {
+        header("Location: visitor_badge.php");
+    }  */
+    if ($stmt->execute()) {
+        $visitorID = $stmt->insert_id; // Get the inserted visitor ID
+        header("Location: visitor_badge.php?visitor_id=" . urlencode($visitorID));
+        exit();
+    }
+    else {
         // Error message if something goes wrong with the query execution
         echo "Error: " . $stmt->error;
     }
