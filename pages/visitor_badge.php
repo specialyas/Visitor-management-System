@@ -11,7 +11,7 @@ if (!isset($_GET['visitor_id'])) {
 $visitorID = $_GET['visitor_id']; 
 
 // Prepare an SQL statement to fetch visitor details from the 'visitors' table
-$stmt = $conn->prepare("SELECT visitor_name, phone_number, visit_purpose, visit_date, signed_in_by FROM visitors WHERE id = ?");
+$stmt = $conn->prepare("SELECT visitor_name, phone_number, visit_purpose, visit_date, visitor_id, signed_in_by FROM visitors WHERE id = ?");
 $stmt->bind_param("i", $visitorID); // Bind visitor ID as an integer
 $stmt->execute();
 $result = $stmt->get_result();
@@ -89,7 +89,9 @@ $conn->close();
         <p><strong>Phone:</strong> <?php echo htmlspecialchars($visitor['phone_number']); ?></p>
         <p><strong>Purpose:</strong> <?php echo htmlspecialchars($visitor['visit_purpose']); ?></p>
         <p><strong>Date:</strong> <?php echo htmlspecialchars($visitor['visit_date']); ?></p>
+        <p><strong>Visitor ID:</strong> <?php echo htmlspecialchars($visitor['visitor_id']); ?></p>
         <p><strong>Signed In By:</strong> <?php echo htmlspecialchars($visitor['signed_in_by']); ?></p>
+
     </div>
 
     <!-- Print Button -->
