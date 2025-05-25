@@ -41,7 +41,7 @@
                         <a class="nav-link" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="../pages/add_visitor.php" class="nav-link">Add Vistor</a>
+                        <a href="../user/add_visitor.php" class="nav-link">Add Vistor</a>
                     </li>
                     <li class="nav-item">
                         <a href="query_data.php" class="nav-link">View</a>

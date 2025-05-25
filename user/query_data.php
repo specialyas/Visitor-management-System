@@ -1,7 +1,7 @@
 <?php
 session_start(); // Start session
 require '../database/db_connection.php';
-require '../pages/checkuserName.php';
+require '../user/checkuserName.php';
 
 // Function to check if the user is logged in
 function checkUserLoginStatus()

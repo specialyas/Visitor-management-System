@@ -12,7 +12,7 @@ function checkUserLoginStatus()
 
 // Include the database connection and other necessary files
 include '../database/db_connection.php';
-include '../pages/checkuserName.php';
+include '../user/checkuserName.php';
 
 // Start the session to access session variables
 session_start();

@@ -1,5 +1,5 @@
 <?php include '../database/db_connection.php'; 
-include '../pages/checkuserName.php';
+include '../user/checkuserName.php';
 
 session_start();
 

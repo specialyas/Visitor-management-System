@@ -1,6 +1,6 @@
 <?php
 
-include '../database/db_connection.php';
+include './database/db_connection.php';
 
 $message = "";
 $toastClass = "";
@@ -34,11 +34,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['email'] = $email;
             $_SESSION['role'] = $role; // Store user role in the session
             if ($role == 'admin') {
-                header("Location: admin_dashboard.php");
+                header("Location: ./admin/admin_dashboard.php");
                 exit();
-
             } else {
-                header("Location: user_dashboard.php");
+                header("Location: ./user/user_dashboard.php");
             }
             // header("location: dashboard.php");
             exit();

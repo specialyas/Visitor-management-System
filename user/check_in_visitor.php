@@ -2,7 +2,7 @@
 // Include the database connection file to interact with the database
 include '../database/db_connection.php';
 // Include the file that contains the function to fetch the username by email
-include '../pages/checkuserName.php';
+include '../user/checkuserName.php';
 
 // Start the session to access session variables (email and user role)
 session_start();
@@ -71,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    
 
 <div>
-<a class="nav-link" href="../pages/user_dashboard.php">Home</a>
+<a class="nav-link" href="../user/user_dashboard.php">Home</a>
 
 </div>
 

@@ -1,7 +1,7 @@
 <?php
 include '../database/db_connection.php';
 // Include the file that contains the function to fetch the username by email
-include '../pages/checkuserName.php';
+include '../user/checkuserName.php';
 
 // Start the session to access session variables (email and user role)
 session_start();

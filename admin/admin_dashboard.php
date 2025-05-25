@@ -1,6 +1,6 @@
 <?php
 include '../database/db_connection.php';
-include '../pages/checkuserName.php';
+include '../user/checkuserName.php';
 
 
 session_start();
@@ -68,7 +68,7 @@ $conn->close();
                 <ul class="navbar-nav m-auto mt-2 mt-lg-0">
                 </ul>
                 <form class="d-flex my-2 my-lg-0">
-                    <a href="./logout.php" class="btn btn-light my-2 my-sm-0"
+                    <a href="../logout.php" class="btn btn-light my-2 my-sm-0"
                       type="submit" style="font-weight:bolder;color:green;">
                         logout</a>
                 </form>
