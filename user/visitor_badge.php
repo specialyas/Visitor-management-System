@@ -97,7 +97,7 @@ $conn->close();
     <!-- Print Button -->
     <button class="print-btn" onclick="window.print()">Print Badge</button>
 </div>
-<a class="nav-link" href="../user/user_dashboard.php">Home</a>
+<a class="nav-link" href="./index.php">Home</a>
 
 </body>
 </html>

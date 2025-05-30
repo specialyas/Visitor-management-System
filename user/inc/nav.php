@@ -15,9 +15,9 @@
                     <li class="nav-item">
                         <a href="query_data.php" class="nav-link">View</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a href="../user/checked_out_visitors.php" class="nav-link <?= $current_page == '../user/checked_out_visitors.php' ? 'active' : '' ?>">CheckedOut Vistors</a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                     <a class="nav-link" href="../logout.php">Logout</a>
                     </li>

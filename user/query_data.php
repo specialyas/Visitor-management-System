@@ -44,7 +44,7 @@ if (!empty($startDate) && !empty($endDate) && $startDate > $endDate) {
     $startDate = '';
     $endDate = '';
 }
-if (!in_array($selectedFilter, ['all_entries', 'active_visitors'])) {
+if (!in_array($selectedFilter, ['all_entries', 'active_visitors', 'signed_out_visitors'])) {
     $selectedFilter = 'active_visitors';
 }
 
@@ -86,6 +86,8 @@ function buildVisitorQuery($isCountQuery = false) {
     // Apply status filter
     if ($selectedFilter === 'active_visitors') {
         $query .= " AND status = 'signed_in'";
+    }elseif ($selectedFilter === 'signed_out_visitors'){
+        $query .= " AND status = 'signed_out'";
     }
     
     // Add ordering and pagination for data query
@@ -249,6 +251,13 @@ $conn->close();
                             <input class="form-check-input" type="radio" name="searchFilter" value="active_visitors" 
                                 <?= ($selectedFilter === 'active_visitors') ? 'checked' : '' ?>>
                             <label class="form-check-label">Current Visitors (in building)</label>
+                        </div>
+
+                        <!-- Radio Button: Exited Visitors -->
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="searchFilter" value="signed_out_visitors" 
+                                <?= ($selectedFilter === 'signed_out_visitors') ? 'checked' : '' ?>>
+                            <label class="form-check-label">Past Visitors (Exited building)</label>
                         </div>
 
                         <!-- Radio Button: All Visitor History -->
