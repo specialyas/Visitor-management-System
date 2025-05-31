@@ -46,7 +46,10 @@ $active_visitors = $visitor_data['active_visitors'];
     
      <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Add to HTML head -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="../css/dashboard.css" rel="stylesheet">
 
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script> -->
@@ -92,20 +95,20 @@ $active_visitors = $visitor_data['active_visitors'];
             Dashboard
           </a>
         </li>
-        <li> <!-- <?php echo ($current_page == 'update_password') ? 'class="active"' : ''; ?> -->
-          <a href="index.php?page=update_password"> <!--  -->
+        <li>  <?php echo ($current_page == 'update_password') ? 'class="active"' : ''; ?> 
+          <a href="index.php?page=update_password"> 
             <i class="bi bi-key"></i>
             Update Password
           </a>
         </li>
-        <li> <!-- <?php echo ($current_page == 'manage_users') ? 'class="active"' : ''; ?> -->
-          <a href="#">  <!-- <a href="index.php?page=manage_users"> -->
+        <li> <?php echo ($current_page == 'manage_users') ? 'class="active"' : ''; ?> 
+          <a href="index.php?page=manage_users">  <!--  -->
             <i class="bi bi-people"></i>
             Manage Users
           </a>
         </li>
-        <li> <!-- <?php echo ($current_page == 'notification' || $current_page == 'add_notice' || $current_page == 'update_notice') ? 'class="active"' : ''; ?>  -->
-          <a href="#"> <!-- index.php?page=notification -->
+        <li> <!-- <?php echo ($current_page == 'visitors' || $current_page == 'add_notice' || $current_page == 'update_notice') ? 'class="active"' : ''; ?>  -->
+          <a href="index.php?page=visitors"> <!--  -->
             <i class="bi bi-bell"></i>
             Manage Visitors
           </a>
@@ -125,8 +128,8 @@ $active_visitors = $visitor_data['active_visitors'];
           if ($page == "update_password") {
             include('update_password.php');
           }
-          if ($page == "notification") {
-            include('display_notification.php');
+          if ($page == "visitors") {
+            include('display_visitors.php');
           }
           if ($page == "update_notice") {
             include('update_notice.php');
