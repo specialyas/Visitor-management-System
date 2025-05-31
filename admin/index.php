@@ -1,9 +1,11 @@
 <?php
+session_start();
+
+
 include '../database/db_connection.php';
 include '../user/checkuserName.php';
 
 
-session_start();
 
 // Check if the user is logged in and is an admin
 if (!isset($_SESSION['email']) || $_SESSION['role'] !== 'admin') {
@@ -11,7 +13,11 @@ if (!isset($_SESSION['email']) || $_SESSION['role'] !== 'admin') {
     exit();
 }
 $email = $_SESSION['email']; // Fetch the email from the session
-$username = getUsernameByEmail($conn, $email);
+
+// if ($_SESSION['role'] === 'admin'){
+//   $admin = $_SESSION['username'];
+// }
+$admin = getUsernameByEmail($conn, $email);
 
 
 
@@ -28,7 +34,7 @@ $total_users = $user_data['total_users'];
 $visitor_query = mysqli_query($conn, "SELECT COUNT(*) AS active_visitors FROM visitors where status = 'signed_in'");
 $visitor_data = mysqli_fetch_assoc($visitor_query);
 $active_visitors = $visitor_data['active_visitors'];
-$conn->close();
+// $conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +65,7 @@ $conn->close();
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Welcome <?php echo 'Admin' . ucfirst("$username") ?></a>
+          <a class="navbar-brand" href="#">Welcome <?php echo 'Admin' . ucfirst("$admin") ?></a>
         </div>
         <div class="navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -87,7 +93,7 @@ $conn->close();
           </a>
         </li>
         <li> <!-- <?php echo ($current_page == 'update_password') ? 'class="active"' : ''; ?> -->
-          <a href="#"> <!-- index.php?page=update_password -->
+          <a href="index.php?page=update_password"> <!--  -->
             <i class="bi bi-key"></i>
             Update Password
           </a>

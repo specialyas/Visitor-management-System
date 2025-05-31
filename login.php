@@ -21,10 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // $stmt->bind_result($db_password);
         $stmt->fetch();
 
-        // Debugging: Print out the stored hashed password and entered password
-         echo "Stored Hashed Password: " . $db_password . "<br>";
-        echo "Entered Password: " . $password . "<br>";
-         // Use password_verify to check the hashed password
+        // Use password_verify to check the hashed password
         if (password_verify($password, $db_password)) {
             $message = "Login successful";
             $toastClass = "bg-success";
@@ -32,6 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Start the session and redirect to the dashboard or homepage
             session_start();
             $_SESSION['email'] = $email;
+
             $_SESSION['role'] = $role; // Store user role in the session
             if ($role == 'admin') {
                 header("Location: ./admin/index.php");
@@ -39,7 +37,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             } else {
                 header("Location: ./user/index.php");
             }
-            // header("location: dashboard.php");
             exit();
         } else {
             $message = "Incorrect password";
