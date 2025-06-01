@@ -8,14 +8,14 @@
       padding: 0;
       padding-top: 50px;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background-color:rgb(216, 224, 228);
+      background-color: #FFF2EB;
     }
     
     /*
      * Top navigation
      */
     .navbar-fixed-top {
-      background-color: #003366;
+      background-color: #AF3E3E;
       border: none;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       height: 60px;
@@ -47,7 +47,7 @@
       left: 0;
       z-index: 1000;
       width: 250px;
-      background-color: #003366;
+      background-color: #AF3E3E;
       padding: 0;
       overflow-x: hidden;
       overflow-y: auto;
@@ -55,12 +55,12 @@
       display: block;
     }
     
-    .sidebar-header {
+    /* .sidebar-header {
       padding: 20px;
       background-color: #003366;
       border-bottom: 1px solid #495057;
     }
-    
+     */
     .sidebar-header h4 {
       color: white;
       margin: 0;
@@ -75,23 +75,25 @@
     }
     
     .nav-sidebar > li {
-      border-bottom: 1px solid #495057;
-      padding-bottom: 20px;
+      border-bottom: 1px solid #978a85;
+      /* padding-bottom: 20px; */
     }
     
     .nav-sidebar > li > a {
       display: flex;
       align-items: center;
       padding: 15px 20px;
-      color: #adb5bd;
+      color: #e5e8eb;
       text-decoration: none;
       font-weight: 500;
       transition: all 0.3s ease;
+            padding-bottom: 30px;
+
     }
     
     .nav-sidebar > li > a:hover {
       color: white;
-      background-color:rgb(56, 104, 155);
+      background-color: #DA6C6C;
       text-decoration: none;
     }
     
@@ -99,7 +101,7 @@
     .nav-sidebar > .active > a:hover,
     .nav-sidebar > .active > a:focus {
       color: white;
-      background-color: #007bff;
+      background-color: #D5451B;
     }
     
     .nav-sidebar > li > a i {
@@ -122,7 +124,7 @@
       margin-bottom: 30px;
       padding-bottom: 15px;
       border-bottom: 2px solid #e9ecef;
-      color:rgb(30, 57, 85);
+      color: #AF3E3E;
       font-weight: 600;
     }
     
@@ -152,12 +154,14 @@
     }
     
     .stat-card.users {
-      background: linear-gradient(135deg, #3498db, #2980b9);
+      /* background: linear-gradient(135deg, #3498db, #2980b9); */
+            background-color: #521C0D;
+
     }
     
     .stat-card.notices {
       /* background: linear-gradient(135deg, #27ae60, #229954); */
-      background-color: #102E50;
+      background-color: #D5451B;
     }
     
     .stat-card-header {
