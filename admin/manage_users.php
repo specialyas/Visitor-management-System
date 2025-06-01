@@ -19,7 +19,7 @@ $q=mysqli_query($conn,"select * from users ");
 $rr=mysqli_num_rows($q);
 if(!$rr)
 {
-echo "<h2 style='color:red'>No any user exists !!!</h2>";
+echo "<h2 style='color:red'>No  user exists !!!</h2>";
 }
 else
 {
@@ -27,7 +27,7 @@ else
 <script>
 	function DeleteUser(id)
 	{
-		if(confirm("You want to delete this record ?"))
+		if(confirm("You want to delete this user?"))
 		{
 		window.location.href="delete_user.php?id="+id;
 		}
@@ -88,7 +88,7 @@ echo "</td>";
 
 // Delete button
 ?>
-<Td><a href="javascript:DeleteUser('<?php echo $row['id']; ?>')" style='color:Red'><span class='glyphicon glyphicon-trash'></span></a></td>
+<td><a href="javascript:DeleteUser('<?php echo $row['id']; ?>')" style='color:Red'><span class='glyphicon glyphicon-trash'></span></a></td>
 <?php 
 
 echo "</Tr>";
