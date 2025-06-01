@@ -14,9 +14,7 @@ $q=mysqli_query($conn,"select * from visitors ");
 <h2 style="color:#27548A">All visitors</h2>
 
 <table class="table table-bordered">
-	<tr>
-		<th colspan="12"><a href="index.php?page=add_visitor">Add New visitor</a></th>
-	</tr>
+	
 	<Tr class="success">
 		<th>Sr.No</th>
 		<th>Visitor ID</th>
@@ -30,7 +28,6 @@ $q=mysqli_query($conn,"select * from visitors ");
 		<th>Signed In By</th>
 		<th>Signed Out By</th>
 		<th>Delete</th>
-		<!-- <th>Update</th> -->
 	</Tr>
 		<?php 
 
@@ -58,7 +55,6 @@ echo "<td>".$row['signed_out_by']."</td>";
 
 
 <?php 
-// echo "<Td><a href='index.php?page=update_visitor&visitor_id=".$row['visitor_id']."' style='color:green'><span class='glyphicon glyphicon-edit'></span></a></td>";
 echo "</Tr>";
 $i++;
 }
