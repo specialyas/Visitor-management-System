@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($checkEmailStmt->num_rows > 0) {
         $message = "Email ID already exists";
-        $toastClass = "toast-primary"; // Bootstrap class for primary color
+        $toastClass = "bg-primary";
     } else {
         // Hash the password before storing it
         $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
@@ -30,11 +30,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($stmt->execute()) {
             $message = "Account created successfully";
-            $toastClass = "toast-success"; // Bootstrap class for success color
+            $toastClass = "bg-success";
             $redirect = true; // Set the flag for redirection
         } else {
             $message = "Error: " . $stmt->error;
-            $toastClass = "toast-danger"; // Bootstrap class for danger color
+            $toastClass = "bg-danger";
         }
 
         $stmt->close();
@@ -47,85 +47,81 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href=
-"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href=
-"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-    <link rel="shortcut icon" href=
-"https://cdn-icons-png.flaticon.com/512/295/295128.png">
-    <script src=
-"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/295/295128.png">
+    <link rel="stylesheet" href="./css/register.css">
     <title>Registration</title>
 </head>
 
-<body class="bg-light">
+<body>
     <div class="container p-5 d-flex flex-column align-items-center">
         <?php if ($message): ?>
-            <div class="toast align-items-center text-white border-0" 
-          role="alert" aria-live="assertive" aria-atomic="true"
-                style="background-color: <?php echo $toastClass; ?>;">
+            <div class="toast align-items-center text-white <?php echo $toastClass; ?> border-0" 
+                 role="alert" aria-live="assertive" aria-atomic="true">
                 <div class="d-flex">
                     <div class="toast-body">
                         <?php echo $message; ?>
                     </div>
-                    <button type="button" class="btn-close
-                    btn-close-white me-2 m-auto" 
-                          data-bs-dismiss="toast"
-                        aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" 
+                            data-bs-dismiss="toast" aria-label="Close"></button>
                 </div>
             </div>
         <?php endif; ?>
-        <form method="post" class="form-control mt-5 p-4"
-            style="height:auto; width:380px;
-            box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-            rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;">
+        
+        <form method="post" class="register-form">
             <div class="row text-center">
-                <i class="fa fa-user-circle-o fa-3x mt-1 mb-2" style="color: green;"></i>
-                <h5 class="p-4" style="font-weight: 700;">Create Your Account</h5>
+                <i class="fa fa-user-circle-o fa-3x mt-1 mb-2 register-icon"></i>
+                <h5 class="register-title">Create Your Account</h5>
             </div>
+            
             <div class="mb-2">
-                <label for="username"><i 
-                  class="fa fa-user"></i> User Name</label>
-                <input type="text" name="username" id="username"
-                  class="form-control" required>
+                <label for="username">
+                    <i class="fa fa-user"></i> User Name
+                </label>
+                <input type="text" name="username" id="username" class="form-control" required>
             </div>
+            
             <div class="mb-2 mt-2">
-                <label for="email"><i 
-                  class="fa fa-envelope"></i> Email</label>
-                <input type="email" name="email" id="email"
-                  class="form-control" required>
+                <label for="email">
+                    <i class="fa fa-envelope"></i> Email
+                </label>
+                <input type="email" name="email" id="email" class="form-control" required>
             </div>
+            
             <div class="mb-2 mt-2">
-                <label for="password"><i 
-                  class="fa fa-lock"></i> Password</label>
-                <input type="password" name="password" id="password"
-                  class="form-control" required>
+                <label for="password">
+                    <i class="fa fa-lock"></i> Password
+                </label>
+                <input type="password" name="password" id="password" class="form-control" required>
             </div>
+            
             <div class="mb-2 mt-3">
-                <button type="submit" 
-                  class="btn btn-success
-                bg-success" style="font-weight: 600;">Create
-                    Account</button>
+                <button type="submit" class="btn btn-success register-btn">
+                    Create Account
+                </button>
             </div>
+            
             <div class="mb-2 mt-4">
-                <p class="text-center" style="font-weight: 600; 
-                color: navy;">I have an Account <a href="./login.php"
-                        style="text-decoration: none;">Login</a></p>
+                <p class="register-links">
+                    I have an Account <a href="./login.php">Login</a>
+                </p>
             </div>
         </form>
     </div>
-<!--     <script>
-        let toastElList = [].slice.call(document.querySelectorAll('.toast'))
-        let toastList = toastElList.map(function (toastEl) {
-            return new bootstrap.Toast(toastEl, { delay: 3000 });
-        });
-        toastList.forEach(toast => toast.show());
-    </script> -->
-     <script>
+    
+    <!-- Pass PHP variables to JavaScript -->
+    <script>
+        window.registerConfig = {
+            redirect: <?php echo $redirect ? 'true' : 'false'; ?>
+        };
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+ <script>
         let toastElList = [].slice.call(document.querySelectorAll('.toast'));
         let toastList = toastElList.map(function (toastEl) {
             return new bootstrap.Toast(toastEl, { delay: 3000 });
@@ -139,6 +135,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }, 3000); // Delay for 3 seconds
         <?php } ?>
     </script>
-</body>
-
+    </body>
 </html>

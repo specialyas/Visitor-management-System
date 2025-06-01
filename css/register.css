@@ -1,0 +1,180 @@
+/* Body styling - More specific selector to override Bootstrap */
+html body,
+body.bg-light {
+    background-color: #328E6E;
+    min-height: 100vh;
+}
+
+/* Register form container */
+.register-form {
+    height: auto;
+    width: 380px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, 
+                rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    padding: 1.5rem;
+    margin-top: 3rem;
+    background-color: white;
+    border-radius: 0.375rem;
+}
+
+/* Register icon styling */
+.register-icon {
+    color: green;
+}
+
+/* Register title styling */
+.register-title {
+    padding: 1.5rem;
+    font-weight: 700;
+    color: #333;
+}
+
+/* Register button styling */
+.register-btn {
+    background-color: #198754;
+    font-weight: 600;
+    width: 100%;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 0.375rem;
+    transition: background-color 0.15s ease-in-out;
+}
+
+.register-btn:hover {
+    background-color: #157347;
+    border-color: #157347;
+}
+
+.register-btn:focus {
+    box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.5);
+}
+
+/* Register links styling */
+.register-links {
+    text-align: center;
+    font-weight: 600;
+    color: #157347;
+}
+
+.register-links a {
+    text-decoration: none;
+    color: #157347;
+}
+
+.register-links a:hover {
+    text-decoration: underline;
+    color: #251e1e;
+}
+
+/* Toast notification positioning */
+.toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1050;
+}
+
+/* Form labels */
+.register-form label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+/* Input field styling */
+.register-form .form-control {
+    border-radius: 0.375rem;
+    border: 1px solid #ced4da;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    padding: 0.75rem;
+}
+
+.register-form .form-control:focus {
+    border-color: #198754;
+    box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.25);
+    outline: 0;
+}
+
+/* Validation states */
+.register-form .form-control.is-invalid {
+    border-color: #dc3545;
+}
+
+.register-form .form-control.is-valid {
+    border-color: #198754;
+}
+
+/* Error message styling */
+.error-message {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+.success-message {
+    color: #198754;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+/* Password strength indicator */
+.password-strength {
+    height: 4px;
+    margin-top: 0.5rem;
+    background-color: #e9ecef;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.password-strength-bar {
+    height: 100%;
+    transition: width 0.3s ease, background-color 0.3s ease;
+    width: 0%;
+}
+
+.password-strength-weak { background-color: #dc3545; }
+.password-strength-fair { background-color: #fd7e14; }
+.password-strength-good { background-color: #ffc107; }
+.password-strength-strong { background-color: #198754; }
+
+/* Loading spinner */
+.spinner-border-sm {
+    width: 1rem;
+    height: 1rem;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+    .register-form {
+        width: 100%;
+        max-width: 350px;
+        margin: 1rem;
+    }
+    
+    .container {
+        padding: 1rem !important;
+    }
+}
+
+/* Icon spacing in labels */
+.register-form label i {
+    margin-right: 0.5rem;
+    color: #6c757d;
+}
+
+/* Form spacing */
+.register-form .mb-2 {
+    margin-bottom: 1rem;
+}
+
+.register-form .mt-2 {
+    margin-top: 1rem;
+}
+
+.register-form .mt-3 {
+    margin-top: 1.5rem;
+}
+
+.register-form .mt-4 {
+    margin-top: 2rem;
+}
