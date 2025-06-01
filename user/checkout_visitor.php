@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($updateStmt->execute()) {
                     // Redirect the user to the login page if not authenticated or not a 'user'
-        header("Location: user_dashboard.php");
+        header("Location: index.php");
         echo "Visitor signed out successfully.";
        
         } else {
