@@ -89,28 +89,34 @@ $active_visitors = $visitor_data['active_visitors'];
         <h4>Welcome Admin!</h4>
       </div> -->
       <ul class="nav nav-sidebar">
-        <li> <!--<?php echo ($current_page == '') ? 'class="active"' : ''; ?>-->
+        <li <?php echo ($current_page == '') ? 'class="active"' : ''; ?>>
           <a href="index.php">
             <i class="bi bi-speedometer2"></i>
             Dashboard
           </a>
         </li>
-        <li>  <?php echo ($current_page == 'update_password') ? 'class="active"' : ''; ?> 
+        <li  <?php echo ($current_page == 'update_password') ? 'class="active"' : ''; ?>>
           <a href="index.php?page=update_password"> 
             <i class="bi bi-key"></i>
             Update Password
           </a>
         </li>
-        <li> <?php echo ($current_page == 'manage_users') ? 'class="active"' : ''; ?> 
+        <li <?php echo ($current_page == 'manage_users') ? 'class="active"' : ''; ?>>
           <a href="index.php?page=manage_users">  <!--  -->
             <i class="bi bi-people"></i>
             Manage Users
           </a>
         </li>
-        <li> <!-- <?php echo ($current_page == 'visitors' || $current_page == 'add_notice' || $current_page == 'update_notice') ? 'class="active"' : ''; ?>  -->
+        <li <?php echo ($current_page == 'visitors' || $current_page == 'add_notice' || $current_page == 'update_notice') ? 'class="active"' : ''; ?>>
           <a href="index.php?page=visitors"> <!--  -->
             <i class="bi bi-bell"></i>
             Manage Visitors
+          </a>
+        </li>
+        <li <?php echo ($current_page == 'report') ? 'class="active"' : ''; ?>>
+          <a href="index.php?page=report">  
+            <i class="bi bi-file-earmark-text"></i>
+            View Report
           </a>
         </li>
       </ul>
@@ -136,6 +142,9 @@ $active_visitors = $visitor_data['active_visitors'];
           }
           if ($page == "add_notice") {
             include('add_notice.php');
+          }
+           if ($page == "report") {
+            include('report.php');
           }
         } else {
       ?>

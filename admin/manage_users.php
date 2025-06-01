@@ -44,7 +44,7 @@ else
 		}
 	}
 </script>
-<h2 style="color:#007bff">All Users</h2>
+<h2 style="color:#AF3E3E">All Users</h2>
 
 <table class="table table-bordered">
 	<Tr class="success">

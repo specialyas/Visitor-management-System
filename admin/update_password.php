@@ -8,6 +8,15 @@
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
+
+  .form-container h2{
+  color: #AF3E3E
+ }
+ .submit-btn, btn{
+      /* background-color: #AF3E3E;  */
+      color: white;
+
+ }
 </style>
 
 <?php
@@ -92,7 +101,7 @@ if (isset($save)) {
 
 <div class="container mt-5 d-flex justify-content-center">
   <div class="form-container">
-    <h2 class="mb-4 text-primary text-center">Update Password</h2>
+    <h2 class="mb-4  text-center">Update Password</h2>
 
     <?php echo @$err; ?>
 
@@ -113,8 +122,8 @@ if (isset($save)) {
       </div>
 
       <div class="d-flex gap-2 justify-content-center">
-        <input type="submit" value="Update Password" name="save" class="btn btn-primary">
-        <input type="reset" class="btn btn-secondary">
+        <input type="submit" value="Update Password" name="save" class="btn btn-info">
+        <input type="reset" class="btn btn-danger">
       </div>
     </form>
   </div>

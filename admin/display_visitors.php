@@ -11,7 +11,7 @@
 $q=mysqli_query($conn,"select * from visitors ");
 
 ?>
-<h2 style="color:#27548A">All visitors</h2>
+<h2 style="color:#AF3E3E">All visitors</h2>
 
 <table class="table table-bordered">
 	
