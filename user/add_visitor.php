@@ -5,9 +5,7 @@ session_start();
 
 $email = $_SESSION['email']; // Fetch the email from the session
 
-
 $username = getUsernameByEmail($conn, $email);
-
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +19,24 @@ $username = getUsernameByEmail($conn, $email);
 
     <title>HTML Registration Form</title>
     <style>
-        
+        body{
+            color: #fff
+        }
+        button[type="submit"] {
+        padding: 15px;
+        border-radius: 10px;
+        border: none;
+        background-color:rgb(165, 196, 166);
+        color: black;
+        cursor: pointer;
+        width: 100%;
+        font-size: 16px;
+}
+
+label{
+    color: #fff;
+}
+
     </style>
 </head>
 
@@ -29,8 +44,8 @@ $username = getUsernameByEmail($conn, $email);
 
 <?php include 'inc/nav.php'; ?>
 
-<div>
-        <h2 class="p-4 mt-5"><?php echo "Logged in as: " . ucfirst("$username") ?></h2>
+<div class="username">
+        <h2 class="p-3"><?php echo "Logged in as: " . ucfirst("$username") ?></h2>
     </div>
     <div class="main">
     <form method="POST" action="check_in_visitor.php">
@@ -44,8 +59,8 @@ $username = getUsernameByEmail($conn, $email);
             <label for="phone_number">Phone Number</label>
             <input type="tel" class="input" name="phone_number" placeholder="Enter phone number" id="phone_number">
       
-           
-            <button type="submit">Sign In</button>
+        
+            <button type="submit" class="sign-in">Sign In</button>
 
         </form> 
     </div>
@@ -53,10 +68,6 @@ $username = getUsernameByEmail($conn, $email);
 
  
 </body>
-
-
-
-
 </html>
 
 

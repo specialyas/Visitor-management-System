@@ -17,7 +17,7 @@ nav {
     align-items: flex-start; /* Changed from center to flex-start to prevent centering vertically */
     min-height: calc(100vh - 60px); /* Adjust height minus the height of the navbar */
 /*     padding-top: 20px; /* Adjust the space between navbar and form */
-  background-color: #f0f0f0; /* Ensure the background color is distinct */
+  background-color: #93c0a2; /* Ensure the background color is distinct */
     border: 1px dotted red;
 }
 
@@ -55,8 +55,8 @@ button[type="submit"] {
     padding: 15px;
     border-radius: 10px;
     border: none;
-    background-color: #4caf50;
-    color: white;
+    background-color: #e4ece5;
+    color: black;
     cursor: pointer;
     width: 100%;
     font-size: 16px;

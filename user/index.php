@@ -66,7 +66,7 @@ $conn->close(); // Close the database connection to free resources
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <title>Check in Vistor</title>
 
 </head>
@@ -118,10 +118,8 @@ $conn->close(); // Close the database connection to free resources
                             // Loop through each visitor in the $visitors array
                             foreach ($visitors as $index => $visitor) {
                                 // Output a paragraph element containing visitor name and time
-                                echo "<p class='card-text visitor-name' 
-                data-name='" . htmlspecialchars($visitor) . "' 
-                data-time='" . htmlspecialchars($visitors_time[$index]) . "'>
-                <a href='#' class='visitor-link'>" .
+                                echo "<p class='card-text visitor-name' data-name='" . htmlspecialchars($visitor) . "' 
+                data-time='" . htmlspecialchars($visitors_time[$index]) . "'> <a href='#' class='visitor-link'>" .
                                     htmlspecialchars($visitor) . " - " .
                                     date('h:i A', strtotime($visitors_time[$index])) . // Format time to 12-hour format (e.g., 03:45 PM)
                                     "</a></p>";
@@ -134,7 +132,7 @@ $conn->close(); // Close the database connection to free resources
 
                     </div>
                 </div>
-            </div>
+            </div> 
         </div>
     </div>
 

@@ -153,17 +153,24 @@ $conn->close();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     
     <!-- Custom Stylesheet -->
-    <link rel="stylesheet" href="../../css/style.css">
+    <!-- <link rel="stylesheet" href="../css/style.css"> -->
 
     <style>
-        /* Set background color for the body */
+         /* Set background color for the body */
         body {
-            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            background-color: #aacc9d;
         }
 
         /* Navbar styling */
         .navbar {
-            background-color: #4a4a4a;
+            background-color: #157347;
+        }
+
+        .nav-link:hover {
+            color: #157347 !important; 
+            background-color: #aacc9d;
         }
         .navbar-brand, .navbar-nav .nav-link {
             color: white;
@@ -171,7 +178,8 @@ $conn->close();
 
         /* Sidebar styling */
         .sidebar {
-            background-color: #b3e5fc;
+            /* background-color: #b3e5fc; */
+            border-right: 1px solid black;
             padding: 20px;
             height: 100vh;
         }
@@ -221,7 +229,8 @@ $conn->close();
         .error-alert {
             margin-bottom: 15px;
         }
-    </style>
+
+           </style>
 </head>
 <body>
     <!-- Include Navigation Bar -->
